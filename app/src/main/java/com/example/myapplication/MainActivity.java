@@ -2,6 +2,9 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,43 +14,16 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button button; // Aponta inicialmente para null
+    EditText editTextMin, editTextMax;
+    TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("ciclo_vida", "onCreate");
-//        Log.w("", "");
-//        Log.i("", "");
-//        Log.wtf("", "");
-        }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("ciclo_vida", "onStart");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("ciclo_vida", "onResume");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("ciclo_vida", "onPause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-          Log.d("ciclo_vida", "onStop");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("ciclo_vida", "onDestroy");
+        button = findViewById(R.id.button);
+        editTextMin = findViewById(R.id.edMin);
+        editTextMax = findViewById(R.id.edMax);
+        tv = findViewById(R.id.tvResultado);
     }
 }
