@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             Double altura = Double.parseDouble(edAltura.getText().toString());
             bundle.putDouble("peso", peso);
             bundle.putDouble("altura", altura);
+            intent.putExtras(bundle);
             startActivity(intent);
         });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
