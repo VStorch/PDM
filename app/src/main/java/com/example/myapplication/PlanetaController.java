@@ -13,7 +13,7 @@ public class PlanetaController {
         // Verifica a lógica de negócio aqui
     }
 
-    public ArrayList<Planeta> getPlaneta() {
+    public ArrayList<Planeta> getPlanetas() {
         return planetaDAO.getPlanetas();
     }
 
