@@ -3,6 +3,9 @@ package com.example.myapplication;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
     SQLiteDatabase db;
+    Button b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +31,16 @@ public class MainActivity extends AppCompatActivity {
         db = openOrCreateDatabase("app_database", MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS notas (id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 " titulo VARCHAR, texto TEXT)");
-        ContentValues values = new ContentValues();
-        values.put("Uma nota", "Minha primeira nota");
-        db.insert("notas", null, values);
+
+        b = findViewById(R.id.button);
+        b.setOnClickListener(v -> {
+            EditText editText = findViewById(R.id.editTextText);
+            String texto = editText.getText().toString();
+            ContentValues cv = new ContentValues();
+            cv.put("titulo", "Nota do Usuário");
+            cv.put("texto", texto);
+            db.insert("notas", null, cv);
+            Toast.makeText("Nota Salva com Sucesso!", Toast.LENGTH_SHORT).show();
+        });
     }
 }
