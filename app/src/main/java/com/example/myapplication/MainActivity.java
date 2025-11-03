@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -24,5 +25,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         db = openOrCreateDatabase("app_database", MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS notas (id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " titulo VARCHAR, texto TEXT)");
+        ContentValues values = new ContentValues();
+        values.put("Uma nota", "Minha primeira nota");
+        db.insert("notas", null, values);
     }
 }
