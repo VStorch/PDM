@@ -21,7 +21,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     SQLiteDatabase db;
     Button button;
-    EditText editText;
+    EditText editTextTitulo;
+    EditText editTextTexto;
     ListView listView;
 
     @Override
@@ -30,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.buttonSalvar);
-        editText = findViewById(R.id.editTextText);
+        editTextTitulo = findViewById(R.id.editTextTitulo);
+        editTextTexto = findViewById(R.id.editTextTexto);
         listView = findViewById(R.id.listView);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -46,10 +48,12 @@ public class MainActivity extends AppCompatActivity {
         carregarListagem();
 
         button.setOnClickListener(v -> {
-            String titulo = editText.getText().toString();
+            String titulo = editTextTitulo.getText().toString();
+            String texto = editTextTexto.getText().toString();
 
             ContentValues cv = new ContentValues();
             cv.put("titulo", titulo);
+            cv.put("txt", texto);
 
             db.insert("notas", null, cv);
 

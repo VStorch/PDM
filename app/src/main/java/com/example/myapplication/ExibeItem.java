@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -11,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class ExibeItem extends AppCompatActivity {
     TextView textViewTitulo;
+    Button btnVoltar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class ExibeItem extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        btnVoltar = findViewById(R.id.buttonVoltar);
         String titulo = getIntent().getStringExtra("titulo");
         textViewTitulo = findViewById(R.id.textViewExibeItem);
         textViewTitulo.setText(titulo);
