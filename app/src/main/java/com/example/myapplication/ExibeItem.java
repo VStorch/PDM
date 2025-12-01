@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -28,5 +29,7 @@ public class ExibeItem extends AppCompatActivity {
         String titulo = getIntent().getStringExtra("titulo");
         textViewTitulo = findViewById(R.id.textViewExibeItem);
         textViewTitulo.setText(titulo);
+
+        btnVoltar.setOnClickListener(v -> finish());
     }
 }
